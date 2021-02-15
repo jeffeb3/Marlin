@@ -406,7 +406,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 11
+#define TEMP_SENSOR_0 5
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -450,7 +450,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
+#define HEATER_0_MAXTEMP 300
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -482,9 +482,9 @@
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
-  #define DEFAULT_Kp 26.15
-  #define DEFAULT_Ki 2.12
-  #define DEFAULT_Kd 80.66
+  #define DEFAULT_Kp 40.76
+  #define DEFAULT_Ki 5.49
+  #define DEFAULT_Kd 75.64
   // Ultimaker
   //#define DEFAULT_Kp 22.2
   //#define DEFAULT_Ki 1.08
@@ -492,7 +492,7 @@
 
   // MakerGear
   //#define DEFAULT_Kp 7.0
-  //#define DEFAULT_Ki 0.1
+  //#define DEFAULT_Ki 0.175.64
   //#define DEFAULT_Kd 12
 
   // Mendel Parts V9 on 12V
@@ -737,7 +737,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 401 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 409 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -757,7 +757,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 3000 }
+#define DEFAULT_MAX_ACCELERATION      { 9000, 9000, 500, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -772,9 +772,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          5000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  5000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   10000   // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -784,7 +784,7 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-//#define CLASSIC_JERK
+#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
   #define DEFAULT_XJERK 10.0
   #define DEFAULT_YJERK 10.0
@@ -963,7 +963,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { 30, 0, -0.5 }
+#define NOZZLE_TO_PROBE_OFFSET { 32, -2.5, -0.5 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1100,7 +1100,7 @@
 
 // The size of the print bed
 #define X_BED_SIZE 300
-#define Y_BED_SIZE 300
+#define Y_BED_SIZE 296
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1290,8 +1290,8 @@
 
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
-  #define MESH_INSET 25             // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 7       // Don't use more than 15 points per axis, implementation limited.
+  #define MESH_INSET 30             // Set Mesh bounds as an inset region of the bed
+  #define GRID_MAX_POINTS_X 9       // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
